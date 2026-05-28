@@ -1,0 +1,4 @@
+upstream_repo: pulp-platform/iDMA
+upstream_tag: v0.6.5
+tracking_branch: track-upstream-0.6.5
+branch_from_tag_cmd: git checkout -b track-upstream-0.6.5 v0.6.5

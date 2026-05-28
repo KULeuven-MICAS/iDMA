@@ -423,6 +423,11 @@ module idma_inst64_top #(
                     dma_op_name = "DMCPY";
                     is_dma_op   = 1'b1;
                     idma_fe_req_d.burst_req.opt.axi_id = idma_fe_sel_chan;
+                    // config bit 0 selects AW decoupling: when set, an AW is
+                    // only issued after the first corresponding R has returned,
+                    // which decouples the AW channel and avoids read/write
+                    // ordering deadlocks.
+                    idma_fe_req_d.burst_req.opt.beo.decouple_aw = idma_fe_cfg[0];
                     idma_fe_req_d.burst_req.length = acc_req_i.data_arga;
 
                     // Perform the following sequence:
